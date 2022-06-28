@@ -1,7 +1,7 @@
 import streamlit as st
-import os
-from zipfile import ZipFile
-from os.path import basename
+#import os
+#from zipfile import ZipFile
+#from os.path import basename
 
 
 st.image('static/keboola_logo.png', width=400)
