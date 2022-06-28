@@ -42,13 +42,13 @@ files = st.file_uploader(
 
 # us os to create a new directory called "output"
 # if it doesn't exist
-if not os.path.exists("output/spotapps"):
-    os.mkdir("output/spotapps")
-if files is not None:
-    for file in files:
-        with zipfile.ZipFile(file, 'r') as zip_ref:
-            zip_ref.extractall('output/spotapps')
-    
+#if not os.path.exists("output/spotapps"):
+#    os.mkdir("output/spotapps")
+#if files is not None:
+#    for file in files:
+#        with zipfile.ZipFile(file, 'r') as zip_ref:
+#            zip_ref.extractall('output/spotapps')
+#    
 if st.button('Replace Database Name and Schema Name'):    
     os.system("cd output/spotapps")
     st.write(os.system("find . -type f -name '*.table.tml' -exec sed -i '' s/" + "KEBOOLA_5984" + "/" + db + "/g {\} +"))
