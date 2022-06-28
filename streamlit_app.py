@@ -1,13 +1,8 @@
 import streamlit as st
-import pandas as pd
-import numpy as np
-import io
-import fileinput
-import zipfile
 import os
 from zipfile import ZipFile
 from os.path import basename
-import subprocess
+
 
 st.image('static/keboola_logo.png', width=400)
 
@@ -24,14 +19,14 @@ db = st.sidebar.text_input('Database Name', 'Enter Database Name')
 schema = st.sidebar.text_input('Schema Name', 'Enter Schema Name')
 
 # if output/spotapps exists, delete it
-if os.path.exists('output/spotapps'):
-    os.system("rm -rf output/spotapps/*")
+#if os.path.exists('output/spotapps'):
+#    os.system("rm -rf output/spotapps/*")
 
 # remove all zip files from the current directory
-for file in os.listdir():
-    if file.endswith(".zip"):
-        os.remove(file)
-        os.system("rm -rf *.zip")
+#for file in os.listdir():
+#    if file.endswith(".zip"):
+#        os.remove(file)
+#        os.system("rm -rf *.zip")
 
 files = st.file_uploader(
                         "Upload a zip file containing your SpotApp", 
