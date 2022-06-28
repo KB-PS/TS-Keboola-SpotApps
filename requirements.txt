@@ -1,9 +1,4 @@
 streamlit
-pandas
-numpy
-io
-fileinput
 zipfile
 os
-zipfile
 subprocess
