@@ -3,8 +3,10 @@ import os
 from zipfile import ZipFile
 from os.path import basename
 
+st.header("Keboola + ThoughtSpot: SpotApp Creation Tool")
 
-st.image('static/keboola_logo.png', width=400)
+st.image('static/keboola+thoughtspot.png', width=250)
+
 
 
 st.markdown('''
