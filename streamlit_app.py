@@ -34,8 +34,8 @@ files = st.file_uploader(
                       accept_multiple_files=True
                       )
 
-if not os.path.exists("output/spotapps"):
-    os.mkdir("output/spotapps")
+#if not os.path.exists("output/spotapps"):
+#    os.mkdir("output/spotapps")
 if files is not None:
     for file in files:
         with ZipFile(file, 'r') as zip_ref:
