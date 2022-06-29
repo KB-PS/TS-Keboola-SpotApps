@@ -22,13 +22,13 @@ if st.button('Activity Center'):
     st.text_input('Enter your database name:', 'KEBOOLA_1234')
     st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
     if st.button('Replace Database Name and Schema Name'):    
-        st.write(os.system("cd output/spotapps"))
+        st.write(os.system("cd spotapps/Activity_Center_SpotApp"))
         st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_5984/{db}/g' {{}} +"))
         st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_10706042/{schema}/g' {{}} +"))
         os.system("cd ~")
         with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
        # Iterate over all the files in directory
-            for folderName, subfolders, filenames in os.walk('output'):
+            for folderName, subfolders, filenames in os.walk('spotapps/Activity_Center_SpotApp'):
                 for filename in filenames:
                     #create complete filepath of file in directory
                     filePath = os.path.join(folderName, filename)
