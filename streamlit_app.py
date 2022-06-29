@@ -45,8 +45,8 @@ if files is not None:
     
 if st.button('Replace Database Name and Schema Name'):    
     st.write(os.system("cd output/spotapps"))
-    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed -i '' s/KEBOOLA_5984/{db}/g {{}} +"))
-    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed -i '' s/WORKSPACE_10706042/{schema}/g {{}} +"))
+    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed -i s/KEBOOLA_5984/{db}/g {{}} +"))
+    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed -i s/WORKSPACE_10706042/{schema}/g {{}} +"))
     os.system("cd ~")
 # create a ZipFile object
 
