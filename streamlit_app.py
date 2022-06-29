@@ -44,7 +44,7 @@ if files is not None:
             zip_ref.extractall('output/spotapps')
     
 if st.button('Replace Database Name and Schema Name'):    
-    os.system("cd output/spotapps")
+    st.write(os.system("cd output/spotapps"))
     st.write(os.system("find . -type f -name '*.table.tml' -exec sed -i '' s/" + "KEBOOLA_5984" + "/" + db + "/g {\} +"))
     st.write(os.system("find . -type f -name '*.table.tml' -exec sed -i '' s/" + "WORKSPACE_10706042" + "/" + schema + "/g {\} +"))
     os.system("cd ~")
