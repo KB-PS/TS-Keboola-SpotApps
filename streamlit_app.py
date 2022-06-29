@@ -49,8 +49,7 @@ if st.button('Activity Center'):
 st.sidebar.markdown('''
 Please enter the database name and schema name from your Snowflake database.
 ''')
-db = st.sidebar.text_input('Database Name', 'Enter Database Name')
-schema = st.sidebar.text_input('Schema Name', 'Enter Schema Name')
+
 
 ## if output/spotapps exists, delete it
 if os.path.exists('output/spotapps'):
