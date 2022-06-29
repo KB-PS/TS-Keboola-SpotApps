@@ -53,7 +53,7 @@ if st.button('Replace Database Name and Schema Name'):
 if st.button("Create Zip"):
     with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
        # Iterate over all the files in directory
-       for folderName, subfolders, filenames in os.walk('.'):
+       for folderName, subfolders, filenames in os.walk('output'):
            for filename in filenames:
                #create complete filepath of file in directory
                filePath = os.path.join(folderName, filename)
