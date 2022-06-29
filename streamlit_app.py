@@ -18,7 +18,7 @@ st.markdown('''
 ### Select a SpotApp to get started.
 ''')
 
-@st.cache
+@st.experimental_singleton
 def activity_center():
     if st.button('Activity Center'):
         db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
