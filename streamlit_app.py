@@ -19,8 +19,8 @@ st.markdown('''
 ''')
 
 if st.button('Activity Center'):
-    st.text_input('Enter your database name:', 'KEBOOLA_1234')
-    st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
+    db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
+    schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
     if st.button('Replace Database Name and Schema Name'):    
         st.write(os.system("cd spotapps/Activity_Center_SpotApp"))
         st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_5984/{db}/g' {{}} +"))
