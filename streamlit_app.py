@@ -38,7 +38,7 @@ if not os.path.exists("output/spotapps"):
     os.mkdir("output/spotapps")
 if files is not None:
     for file in files:
-        with zipfile.ZipFile(file, 'r') as zip_ref:
+        with ZipFile(file, 'r') as zip_ref:
             zip_ref.extractall('output/spotapps')
     
 if st.button('Replace Database Name and Schema Name'):    
