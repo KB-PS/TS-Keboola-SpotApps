@@ -19,6 +19,7 @@ st.markdown('''
 ''')
 
 
+@st.cache
 def activity_center():
     db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
     schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
@@ -45,7 +46,12 @@ def activity_center():
         mime="application/zip"
     )
 
+@st.cache
 def shopify():
+    """
+    Shopify SpotApp - Replace Database Name and Schema Name
+
+    """
     db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
     schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
     def db_schema_replace():
