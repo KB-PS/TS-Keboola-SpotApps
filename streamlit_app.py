@@ -8,50 +8,23 @@ st.header("Keboola + ThoughtSpot: SpotApp Creation Tool")
 st.image('static/keboola+thoughtspot.png', width=250)
 
 
-
 st.markdown('''
 Keboola SpotApp Helper is a tool to help you create ThoughtSpot SpotApps.  
 ''')
 
 st.sidebar.title('Welcome!')
 st.markdown('''
-### Select a SpotApp to get started.
+### Enter the database and schema name of your own Snowflake datawarehouse and click the button to automatically edit your TML.
 ''')
 
 db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
 schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
 
-@st.cache
-def activity_center(db, schema):
-    def db_schema_replace():
-        if  st.button('Replace Database Name and Schema Name'):    
-            st.write(os.system("cd Activity_Center_SpotApp"))
-            st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_5539/{db}/g' {{}} +"))
-            st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_15606217/{schema}/g' {{}} +"))
-            os.system("cd ..")
-    db_schema_replace()
-    with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
-        #EIterate over all the files in directory
-        for folderName, subfolders, filenames in os.walk('Activity_Center_SpotApp'):
-            for filename in filenames:
-                #create complete fileath of file in directory
-                filePath = os.path.join(folderName, filename)
-                # Add file to zip
-    return zipObj.write(filePath, basename(filePath))
-
-@st.cache
-def shopify(db, schema):
-    """
-    Shopify SpotApp - Replace Database Name and Schema Name
-
-    """
-    def db_schema_replace():
-        if  st.button('Replace Database Name and Schema Name'):    
-            st.write(os.system("cd Shopify_SpotApp"))
-            st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +"))
-            st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
-            os.system("cd ..")
-    db_schema_replace()
+if  st.button('Replace Database Name and Schema Name'):    
+    st.write(os.system("cd Shopify_SpotApp"))
+    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +"))
+    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
+    os.system("cd ..")
     with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
         #EIterate over all the files in directory
         for folderName, subfolders, filenames in os.walk('Shopify_SpotApp'):
@@ -59,28 +32,14 @@ def shopify(db, schema):
                 #create complete fileath of file in directory
                 filePath = os.path.join(folderName, filename)
                 # Add file to zip
-    return zipObj.write(filePath, basename(filePath))
-    
-
-if st.button('Activity Center'):
-    activity_center(db, schema)
     with open("Output_SpotApp.zip", "rb") as fp:
         btn = st.download_button(
         label="Download ZIP",
         data=fp,
         file_name="myfile.zip",
         mime="application/zip"
-    )
+    )              
 
-if st.button('Shopify'):
-    shopify(db, schema)
-    with open("Output_SpotApp.zip", "rb") as fp:
-        btn = st.download_button(
-        label="Download ZIP",
-        data=fp,
-        file_name="myfile.zip",
-        mime="application/zip"
-    )
 # create a ZipFile object
     
         
