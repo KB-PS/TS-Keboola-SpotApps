@@ -47,7 +47,37 @@ def activity_center():
             mime="application/zip"
         )
 
+def shopify():
+    if st.button('Shopify'):
+        db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
+        schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
+        def db_schema_replace():
+            if  st.button('Replace Database Name and Schema Name'):    
+                st.write(os.system("cd Shopify_SpotApp"))
+                st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +"))
+                st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
+                os.system("cd ..")
+        db_schema_replace()
+
+        with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
+            #EIterate over all the files in directory
+            for folderName, subfolders, filenames in os.walk('Shopify_SpotApp'):
+                for filename in filenames:
+                    #create complete fileath of file in directory
+                    filePath = os.path.join(folderName, filename)
+                    # Add file to zip
+                    zipObj.write(filePath, basename(filePath))
+        with open("Output_SpotApp.zip", "rb") as fp:
+            btn = st.download_button(
+            label="Download ZIP",
+            data=fp,
+            file_name="myfile.zip",
+            mime="application/zip"
+        )
+
 activity_center()
+
+shopify()
 # create a ZipFile object
     
         
