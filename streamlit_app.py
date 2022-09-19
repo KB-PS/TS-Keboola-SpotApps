@@ -37,8 +37,7 @@ def activity_center(db, schema):
                 #create complete fileath of file in directory
                 filePath = os.path.join(folderName, filename)
                 # Add file to zip
-                zipObj.write(filePath, basename(filePath))
-   
+    return zipObj.write(filePath, basename(filePath))
 
 @st.cache
 def shopify(db, schema):
@@ -60,7 +59,7 @@ def shopify(db, schema):
                 #create complete fileath of file in directory
                 filePath = os.path.join(folderName, filename)
                 # Add file to zip
-                zipObj.write(filePath, basename(filePath))
+    return zipObj.write(filePath, basename(filePath))
     
 
 if st.button('Activity Center'):
