@@ -18,11 +18,11 @@ st.markdown('''
 ### Select a SpotApp to get started.
 ''')
 
+db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
+schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
 
 @st.cache
-def activity_center():
-    db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
-    schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
+def activity_center(db, schema):
     def db_schema_replace():
         if  st.button('Replace Database Name and Schema Name'):    
             st.write(os.system("cd Activity_Center_SpotApp"))
@@ -46,14 +46,12 @@ def activity_center():
         mime="application/zip"
     )
 
-
-def shopify():
+@st.cache
+def shopify(db, schema):
     """
     Shopify SpotApp - Replace Database Name and Schema Name
 
     """
-    db = st.text_input('Enter your database name:', 'KEBOOLA_1234', on_change=db_schema_replace)
-    schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789', on_change=db_schema_replace)
     def db_schema_replace():
         if  st.button('Replace Database Name and Schema Name'):    
             st.write(os.system("cd Shopify_SpotApp"))
@@ -78,10 +76,10 @@ def shopify():
     )
 
 if st.button('Activity Center'):
-    activity_center()
+    activity_center(db, schema)
 
 if st.button('Shopify'):
-    shopify()
+    shopify(db, schema)
 # create a ZipFile object
     
         
