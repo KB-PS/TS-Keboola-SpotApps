@@ -26,8 +26,8 @@ schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
 if st.button("Create TML"):
     st.write("you entered database name: ", db)
     st.write("you entered schema name: ", schema)
-    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +"))
-    #st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
+    st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} + -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
+    #st.write(os.system(f"find . -type f -name '*.table.tml' "))
     os.system("cd ..")
     with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
         #EIterate over all the files in directory
