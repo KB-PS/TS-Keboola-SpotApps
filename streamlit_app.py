@@ -21,7 +21,7 @@ st.markdown('''
 
 def activity_center():
     if st.button('Activity Center'):
-        db = st.text_input('Enter your database name:', 'KEBOOLA_1234', on_change=db_schema_replace())
+        db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
         schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
         def db_schema_replace():
             if  st.button('Replace Database Name and Schema Name'):    
