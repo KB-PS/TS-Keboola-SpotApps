@@ -28,7 +28,7 @@ if st.button("Create TML"):
     st.write("you entered database name: ", db)
     st.write("you entered schema name: ", schema)
     st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +"))
-    time.wait(5)
+    time.sleep(5)
     st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
     os.system("cd ..")
     with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
