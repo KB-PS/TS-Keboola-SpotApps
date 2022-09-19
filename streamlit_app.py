@@ -17,28 +17,34 @@ st.markdown('''
 ### Enter the database and schema name of your own Snowflake datawarehouse and click the button to automatically edit your TML.
 ''')
 
+st.write(os.system("cd Shopify_SpotApp"))
 
-if  st.button('Customize your TML'):   
-    db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
-    schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789') 
-    st.write(os.system("cd Shopify_SpotApp"))
+db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
+
+if st.button('replace db'):
     st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +"))
+
+schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789') 
+
+if st.button('replace schema'):
     st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
-    os.system("cd ..")
-    with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
-        #EIterate over all the files in directory
-        for folderName, subfolders, filenames in os.walk('Shopify_SpotApp'):
-            for filename in filenames:
-                #create complete fileath of file in directory
-                filePath = os.path.join(folderName, filename)
-                # Add file to zip
-    with open("Output_SpotApp.zip", "rb") as fp:
-        btn = st.download_button(
-        label="Download ZIP",
-        data=fp,
-        file_name="myfile.zip",
-        mime="application/zip"
-    )              
+
+    
+os.system("cd ..")
+with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
+    #EIterate over all the files in directory
+    for folderName, subfolders, filenames in os.walk('Shopify_SpotApp'):
+        for filename in filenames:
+            #create complete fileath of file in directory
+            filePath = os.path.join(folderName, filename)
+            # Add file to zip
+with open("Output_SpotApp.zip", "rb") as fp:
+    btn = st.download_button(
+    label="Download ZIP",
+    data=fp,
+    file_name="myfile.zip",
+    mime="application/zip"
+)              
 
 # create a ZipFile object
     
