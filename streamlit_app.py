@@ -17,10 +17,10 @@ st.markdown('''
 ### Enter the database and schema name of your own Snowflake datawarehouse and click the button to automatically edit your TML.
 ''')
 
-db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
-schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
 
-if  st.button('Replace Database Name and Schema Name'):    
+if  st.button('Customize your TML'):   
+    db = st.text_input('Enter your database name:', 'KEBOOLA_1234')
+    schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789') 
     st.write(os.system("cd Shopify_SpotApp"))
     st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +"))
     st.write(os.system(f"find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +"))
