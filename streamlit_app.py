@@ -38,13 +38,7 @@ def activity_center(db, schema):
                 filePath = os.path.join(folderName, filename)
                 # Add file to zip
                 zipObj.write(filePath, basename(filePath))
-    with open("Output_SpotApp.zip", "rb") as fp:
-        btn = st.download_button(
-        label="Download ZIP",
-        data=fp,
-        file_name="myfile.zip",
-        mime="application/zip"
-    )
+   
 
 @st.cache
 def shopify(db, schema):
@@ -67,6 +61,10 @@ def shopify(db, schema):
                 filePath = os.path.join(folderName, filename)
                 # Add file to zip
                 zipObj.write(filePath, basename(filePath))
+    
+
+if st.button('Activity Center'):
+    activity_center(db, schema)
     with open("Output_SpotApp.zip", "rb") as fp:
         btn = st.download_button(
         label="Download ZIP",
@@ -75,11 +73,15 @@ def shopify(db, schema):
         mime="application/zip"
     )
 
-if st.button('Activity Center'):
-    activity_center(db, schema)
-
 if st.button('Shopify'):
     shopify(db, schema)
+    with open("Output_SpotApp.zip", "rb") as fp:
+        btn = st.download_button(
+        label="Download ZIP",
+        data=fp,
+        file_name="myfile.zip",
+        mime="application/zip"
+    )
 # create a ZipFile object
     
         
