@@ -1,6 +1,7 @@
 import streamlit as st
 import os
 from zipfile import ZipFile
+import shutil
 from os.path import basename
 import time
 
@@ -27,23 +28,19 @@ schema = st.text_input('Enter your schema name:', 'WORKSPACE_123456789')
 if st.button("Create TML"):
     st.write("you entered database name: ", db)
     st.write("you entered schema name: ", schema)
-    os.system(f"find . -type f -name '*.table.tml' -exec sed  's/KEBOOLA_7615/{db}/g' {{}} +; find . -type f -name '*.table.tml' -exec sed 's/WORKSPACE_23825284/{schema}/g' {{}} +")
+    os.system(
+        f"find . -type f -name '*.table.tml' -exec sed -i '' -e 's/KEBOOLA_7615/{db}/g' {{}} \; && find . -type f -name '*.table.tml' -exec sed -i '' -e 's/WORKSPACE_23825284/{schema}/g' {{}} \;"
+    )
     #os.system()
     os.system("cd ..")
-    with ZipFile('Output_SpotApp.zip', 'w') as zipObj:
-        #EIterate over all the files in directory
-        for folderName, subfolders, filenames in os.walk('Shopify_SpotApp'):
-            for filename in filenames:
-                #create complete fileath of file in directory
-                filePath = os.path.join(folderName, filename)
-                # Add file to zip
+    shutil.make_archive('Output_SpotApp', 'zip', 'Shopify_SpotApp')
     with open("Output_SpotApp.zip", "rb") as fp:
         btn = st.download_button(
         label="Download ZIP",
         data=fp,
         file_name="myfile.zip",
         mime="application/zip"
-    )              
+    )
 
 # create a ZipFile object
     
